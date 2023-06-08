@@ -1,0 +1,144 @@
+.popinfotop{
+    background-color: transparent;
+    width: 95%;
+    position: absolute;
+    left: 2.5%;
+    top: 2%;
+    height: 53%;
+}
+/*.popinfotop::after {
+    content: "";
+    position: absolute;
+    bottom: -5%;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(to bottom, #f6f4e5 0%, #f6f4e5 10%, #f6f4e5 10%, #f6f4e5 90%, #f6f4e5 90%, #f6f4e5 100%);
+}*/
+.popinfobottom{
+    background-color: transparent;
+    width: 95%;
+    position: absolute;
+    left: 2.5%;
+    bottom: 2.5%;
+    height: 39%;
+}
+.popinfotoptop{
+    position: absolute;
+    width: 100%;
+    font-size: 3rem;
+    height: 3rem;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+}
+.nomartist{
+    color: #9b9be8;
+}
+.quitpopinfo{
+    height: 100%;
+    aspect-ratio: 1/1;
+    transform: rotate(45deg);
+    transition: 0.2s ease-in-out;
+}
+.quitpopinfo:hover{
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+.quitpopinfo>svg{
+    height: 100%;
+    width: 100%;
+    opacity: 0.7;
+}
+.popinfotopbottom{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 3rem - 0.5rem);
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    display: flex;
+}
+.containimg{
+    height: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: 5px;
+}
+.containimg>img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.infoartist{
+    position: relative;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    width: 40%;
+    height: 100%;
+    background-color: transparent;
+    display: block;
+}
+.infoartist, .infotitre{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    color: #f6f4e5;
+}
+.infoartist>span, .infotitre>span{
+    font-size: 1rem;
+}
+.infotitre{
+    position: relative;
+    margin-left: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 40%;
+    height: 100%;
+    background-color: transparent;
+    display: block;
+    padding-left: calc(0.5rem + 2px);
+}
+.infotitre::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 0; /* Décalage pour centrer le dégradé, ajustez selon vos besoins */
+    width: 1px; /* Largeur de la bordure, ajustez selon vos besoins */
+    height: 75%;
+    background: linear-gradient(to left, #f6f4e5 0%, #f6f4e5 10%, #f6f4e5 10%, #f6f4e5 90%, #f6f4e5 90%, #f6f4e5 100%);
+}
+.nomalbum{
+    position: absolute;
+    width: 100%;
+    font-size: 2rem;
+    height: 2rem;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    color: #9b9be8;
+}
+.showalbums{
+    width: 100%;
+    height: calc(100% - 2rem - 1rem);
+    position: absolute;
+    top: 3rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    display: flex;
+}
+.album{
+    position: relative;
+    aspect-ratio: 1/1;
+    margin-right: 0.75rem;
+    height: 98%;
+    border-radius: 5px;
+}
+.album>img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}

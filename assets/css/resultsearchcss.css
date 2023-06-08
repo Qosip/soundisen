@@ -1,0 +1,204 @@
+.topresultsearch{
+    height: 50%;
+    position: relative;
+    width: 95%;
+    margin-left: 2.5%;
+    background-color: transparent;
+    margin-top: 1.5%;
+}
+.albumresultsearch{
+    height: 40%;
+    position: relative;
+    margin-left: 2.5%;
+    width: 95%;
+    margin-top: 1.5%;
+    background-color: transparent;
+}
+.resultartist{
+    position: absolute;
+    width: 49%;
+    height: 100%;
+    left: 0;
+    background-color: transparent;
+}
+.resulttitre{
+    position: absolute;
+    width: 49%;
+    height: 100%;
+    right: 0;
+    background-color: transparent;
+}
+.titlesectionresult{
+    position: relative;
+    font-size: 2rem;
+    color: #9b9be8;
+}
+.sliderresultartist{
+    position: relative;
+    width: 100%;
+    height: 70%;
+    margin-top: 1rem;
+    background-color: transparent;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.fogresultartist{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #2a2a2a);
+}
+.showresultfromartist{
+    position: relative;
+    height: 100%;
+    margin-right: 1rem;
+    aspect-ratio: 1/1;
+    background-color: #a1a1a1;
+    border-radius: 5px;
+}
+.sliderresultalbum{
+    position: relative;
+    width: 100%;
+    height: 70%;
+    margin-top: 1rem;
+    background-color: transparent;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+.showresultfromalbum{
+    position: relative;
+    height: 100%;
+    margin-right: 1rem;
+    aspect-ratio: 1/1;
+    background-color: #a1a1a1;
+    border-radius: 5px;
+}
+.showresultfromalbum:hover{
+    cursor: pointer;
+}
+.showresultfromartist:hover{
+    cursor: pointer;
+}
+.sliderresulttitres {
+    position: relative;
+    margin-top: 1rem;
+    height: 70%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: transparent;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.showresultfromtitres{
+    width: 100%;
+    height: 3rem;
+    position: relative;
+    border-radius: 5px;
+    background-color: rgba(30, 30, 30, 0.65);
+    margin-bottom: 0.5rem;
+}
+
+.fogresulttitre{
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #2a2a2a);
+}
+.ImgResult1, .ImgResult2{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.onhoverResult1, .onhoverResult2{
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    opacity: 1;
+    left: 0;
+    transition: 0.2s ease-out;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, rgba(26, 26, 26, 0.19), #1a1a1a);
+}
+.imagesearch:hover{
+    cursor: pointer;
+}
+.heartlivesearch{
+    position: absolute;
+    aspect-ratio: 1/1;
+    right: 0;
+    height: 60%;
+    top: 20%;
+}
+.heartlivesearch:hover{
+    cursor: pointer;
+}
+.heartlivesearch>svg{
+    height: 100%;
+    width: 100%;
+}
+.pluslivesearch{
+    position: absolute;
+    aspect-ratio: 1/1;
+    margin-right: 8%;
+    left: 0;
+    height: 80%;
+    top: 9%;
+}
+.pluslivesearch:hover{
+    cursor: pointer;
+}
+.pluslivesearch>svg{
+    width: 100%;
+    height: 100%;
+}
+.actionlivesearch{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    top: 0;
+    background-color: #232323;
+    width: 3.5rem;
+}
+.artistehoversearch{
+    color: #f6f4e5;
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    top: max(calc(50% - 1rem), 2rem);
+    height: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.albumhoversearch{
+    color: rgba(246, 244, 229, 0.67);
+    position: absolute;
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+    left: 10%;
+    top: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 1.25rem;
+}
+.artistealbumhoversearch{
+    color: #f6f4e5;
+    position: absolute;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    top: 25%;
+    height: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+}

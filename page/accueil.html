@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SoundIsen</title>
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/resultsearchcss.css" rel="stylesheet">
+    <link href="../assets/css/playlist.css" rel="stylesheet">
+    <link href="../assets/css/popupinformation.css" rel="stylesheet">
+    <link href="../assets/css/resize.css" rel="stylesheet">
+    <link href="../assets/css/visualiser.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
+    <script src="../assets/js/ajax.js" defer></script>
+    <script src="../assets/js/sound.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <script src="../assets/js/mainwindowevent.js" defer></script>
+    <script src="../assets/js/player.js" defer></script>
+    <script src="../assets/js/visualiser.js" defer></script>
+    <link rel="icon" href="../assets/img/logoblanctransparent.png" style="aspect-ratio: 2/10" type="image/png">
+</head>
+<body>
+<header id="head">
+    <div class="logo toaccueil">
+        <img alt="img" class="imglog" src="../assets/img/logoblanc.png">
+    </div>
+    <div class="SoundIsen toaccueil">SoundIsen</div>
+    <div class="search" id="searchbar">
+        <div class="svgsearch">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </div>
+        <input class="InputSearch" id="inputsearch" type="search" placeholder="Search" maxlength="255">
+    </div>
+    <div class="searchpopup" id="Spopup">
+        <div class="filter">
+            <div class="filterelem"><div class="txtfilter" id="filtertitre">Titres</div></div>
+            <div class="filterelem"><div class="txtfilter" id="filterartiste">Artistes</div></div>
+            <div class="filterelem"><div class="txtfilter" id="filterAlbum">Albums</div></div>
+        </div>
+        <div class="divlivesearch divgrabvertical" id="idsearchresult">
+            <!--<div class="resultlivesearch">
+                <div class="imagesearch">
+                    <div class="playbuttononsearch">
+
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                    </svg>
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                </div>
+                <div class="infolivesearch">
+                    <div class="titleinfolivesearch">Sefa</div>
+                    <div class="otherinfolivesearch">Muzika (remix) - unforgiven</div>
+                </div>
+                <div class="endlivesearch">
+                    <div class="dureelivesearch">00:10</div>
+                    <div class="chevronlivesearch">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="fogsearch" id="fogsearch"></div>
+    </div>
+    <div class="backdropshadowfilterpopup" id="backpopfilter"></div>
+    <div class="user" id="Userr">
+        <div class="nomutil">Username</div>
+        <div class="pp">
+            <img alt="img" src="../assets/img/sefa.jpg">
+        </div>
+    </div>
+    <div class="displayinfouser">
+        <div class="infoprenom" id="info1" onwheel="scrollHorizontally(event, 'info1')">Prénom : </div>
+        <div class="infonom" id="info2" onwheel="scrollHorizontally(event, 'info2')">Nom : </div>
+        <div class="infoage" id="info3" onwheel="scrollHorizontally(event, 'info3')">Age : </div>
+        <div class="infomail" id="info4" onwheel="scrollHorizontally(event, 'info4')">Mail : </div>
+        <div class="infomdp" id="info5" onwheel="scrollHorizontally(event, 'info5')">Mot de passe : <span></span></div>
+    </div>
+</header>
+<section class="left">
+    <div class="playlist">
+        <div class="disc">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-disc" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 4a4 4 0 0 0-4 4 .5.5 0 0 1-1 0 5 5 0 0 1 5-5 .5.5 0 0 1 0 1zm4.5 3.5a.5.5 0 0 1 .5.5 5 5 0 0 1-5 5 .5.5 0 0 1 0-1 4 4 0 0 0 4-4 .5.5 0 0 1 .5-.5z"/>
+            </svg>
+        </div>
+        <div class="txtPlaylist">
+            Playlist
+        </div>
+        <div class="addplaylist" id="buttoncreateplaylist">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="leftListPlaylist divgrabvertical" id="grabplaylist" onwheel="scrollVertically(event, 'grabplaylist')">
+        <div class="itemLeftPlaylist">
+            <div class="iconLeftPlaylist like">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg>
+            </div>
+            <div class="nomLeftPlaylist">Titres Like</div>
+        </div>
+        
+        <!--<div class="itemLeftPlaylist">
+            <div class="iconLeftPlaylist">
+                <img alt="img" src="../assets/img/logoblanc.png">
+            </div>
+            <div class="nomLeftPlaylist">Titres Like</div>
+        </div>-->
+    </div>
+</section>
+<section class="main" id="Mainwindow">
+
+    <div class="Motd" id="Motd">Bonjour</div>
+    <div class="titlesection">Titres Récemments écoutés</div>
+    <div class="previouslylistened divgrab" id="firstcontain" onwheel="scrollHorizontally(event, 'firstcontain')">
+        <!--<div class="soundprevlist">
+            <img alt="img" class="Imgsec1" src="../assets/img/sefa.jpg">
+            <div class="onhoversec1">
+                <div class="artistehover">
+                    Sefa
+                </div>
+                <div class="titrehover">
+                    Muzika (Remix)
+                </div>
+            </div>
+            <div class="lientitre">../assets/music/Daft_Punk_Get_Lucky.mp3</div>
+        </div>-->
+    </div>
+    <div class="titlesection">Liste de lecture</div>
+    <div class="previouslylistened divgrab" id="secondcontain" onwheel="scrollHorizontally(event, 'secondcontain')" onmouseup="document.body.style.cursor = 'default'">
+        <div class="soundprevlist">
+            <img alt="img" class="Imgsec1" src="../assets/img/sefa.jpg">
+            <div class="onhoversec1">
+                <div class="artistehover">
+                    Sefa
+                </div>
+                <div class="titrehover">
+                    Muzika (Remix)
+                </div>
+            </div>
+            <div class="lientitre">http://prj-web-cir2-grp-58/assets/music/Taylor_Swift_Look_What_You_Made_Me_Do.mp3</div>
+        </div>
+    </div>
+    <div class="titlesection">Les dernières sorties</div>
+    <div class="previouslylistened divgrab" id="thirdcontain" onwheel="scrollHorizontally(event, 'thirdcontain')">
+        <div class="soundprevlist">
+            <img alt="img" class="Imgsec1" src="../assets/img/sefa.jpg">
+            <div class="onhoversec1">
+                <div class="artistehover">
+                    Sefa
+                </div>
+                <div class="titrehover">
+                    Muzika (Remix)
+                </div>
+            </div>
+            <div class="lientitre">http://prj-web-cir2-grp-58/assets/music/Taylor_Swift_Look_What_You_Made_Me_Do.mp3</div>
+        </div>
+    </div>
+    <div class="fog" id="fog"></div>
+    <div class="containerpopupplaylist" id="popupcontaincreateplaylist"></div>
+<!--
+        <div class="topresultsearch">
+            <div class="resultartist">
+                <div class="titlesectionresult">Artistes</div>
+                <div class="sliderresultartist divgrab" id="resultfirstcontain" onwheel="scrollHorizontally(event, 'resultfirstcontain')">
+                    <div class="showresultfromartist">
+                        <img alt="img" class="ImgResult1" src="../assets/img/sefa.jpg">
+                        <div class="onhoverResult1">
+                            <div class="artistehoversearch">
+                                Sefa
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fogresultartist" id="fogresultartist"></div>
+            </div>
+            <div class="resulttitre">
+                <div class="titlesectionresult">Titres</div>
+                <div class="sliderresulttitres divgrabvertical" id="resultsecondcontain" onwheel="scrollVertically(event, 'resultsecondcontain')">
+                    <div class="showresultfromtitres">
+                        <div class="imagesearch">
+                            <div class="playbuttononsearch ">
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                            </svg>
+                            <img alt="img" src="../assets/img/sefa.jpg">
+                        </div>
+                        <div class="infolivesearch">
+                            <div class="titleinfolivesearch">Sefa</div>
+                            <div class="otherinfolivesearch">Muzika (remix) - unforgiven</div>
+                            <div class="actionlivesearch">
+                                <div class="heartlivesearch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    </svg>
+                                </div>
+                                <div class="pluslivesearch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="endlivesearch">
+                            <div class="dureelivesearch">00:10</div>
+                            <div class="chevronlivesearch">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="showresultfromtitres">
+                        <div class="imagesearch">
+                            <div class="playbuttononsearch ">
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                            </svg>
+                            <img alt="img" src="../assets/img/sefa.jpg">
+                        </div>
+                        <div class="infolivesearch">
+                            <div class="titleinfolivesearch">Sefa</div>
+                            <div class="otherinfolivesearch">Muzika (remix) - unforgiven</div>
+                            <div class="actionlivesearch">
+                                <div class="heartlivesearch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    </svg>
+                                </div>
+                                <div class="pluslivesearch">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="endlivesearch">
+                            <div class="dureelivesearch">00:10</div>
+                            <div class="chevronlivesearch">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fogresulttitre" id="fogresulttitre"></div>
+            </div>
+        </div>
+        <div class="albumresultsearch">
+            <div class="titlesectionresult">Albums</div>
+            <div class="sliderresultalbum divgrab" id="resultthirdcontain" onwheel="scrollHorizontally(event, 'resultthirdcontain')">
+                <div class="showresultfromalbum">
+                    <img alt="img" class="ImgResult2" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="showresultfromalbum">
+                    <img alt="img" class="ImgResult2" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fogresultartist" id="fogresultartistbis"></div>
+        </div>
+
+
+    <div class="containerpopupplaylist" id="popupcontaincreateplaylist"></div>
+    <div class="infoplaylist">
+        <div class="imgplaylist">
+            <img alt="img" src="../assets/img/sefa.jpg">
+        </div>
+        <div class="donneesplaylist">
+            <div class="Nomplaylist">
+                Nom : <span id="popplaylistnom">Playlist du dimanche</span>
+            </div>
+            <div class="Dureeplaylist">
+                Durée : <span id="popplaylistduree">50:34</span>
+            </div>
+            <div class="Datecreationplaylist">
+                Date de création : <span id="popplaylistdate">04/06/2023</span>
+            </div>
+        </div>
+    </div>
+    <div class="listplaylist divgrabvertical" id="containplaylist" onwheel="scrollVertically(event, 'containplaylist')">
+        <div class="musicinplaylist">
+            <div class="musicinplayliststart">
+                <img alt="img" src="../assets/img/sefa.jpg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-play-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                </svg>
+            </div>
+            <div class="musicinplaylistmid">
+                <div class="musicinplaylistmidartist">Sefa</div>
+                <div class="musicinplaylistmidname">Muzika - (remix)</div>
+            </div>
+            <div class="musicinplaylistlast">
+                <div class="buttonplusandheart">
+                    <div class="heartlivesearch">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                        </svg>
+                    </div>
+                    <div class="pluslivesearch">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="buttontimeandmore">
+                    <div class="buttontimeandmoretime">03:02</div>
+                    <div class="buttontimeandmoremore">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containerpopupplaylist" id="popupcontaincreateplaylist"></div>-->
+</section>
+<section class="popupinformations" id="bigsectionpop">
+    <div class="containerpopupinfo" id="toshowpopupinfo">
+        <div class="popinfotop">
+            <div class="popinfotoptop">
+                <div class="nomartist">Sefa</div>
+                <div class="quitpopinfo" id="quitinfo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="popinfotopbottom">
+                <div class="containimg">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                </div>
+                <div class="infoartist divgrab" id="infart" onwheel="scrollHorizontally(event, 'infart')">
+                    <div class="Dnomdescene">Nom de scène : <span>Sefa</span></div>
+                    <div class="Dprenom">Prénom : <span>Sefa</span></div>
+                    <div class="Dnom">Nom : <span>Vaarklampeeeeeee</span></div>
+                    <div class="Dmort">Mort : <span>-</span></div>
+                    <div class="Dstyle">Style : <span>Frenchcore</span></div>
+                    <div class="Dtype">Type : <span>Dj</span></div>
+                </div>
+                <div class="infotitre divgrab" id="inftitre" onwheel="scrollHorizontally(event, 'inftitre')">
+                    <div class="Dtrack">Titre : <span>Muzika (Remix)</span></div>
+                    <div class="Dalbum">Album : <span>Libjernen</span></div>
+                    <div class="Dduree">Durée : <span>3:02</span></div>
+                    <div class="Dannee">Année : <span>2023</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="popinfobottom">
+            <div class="nomalbum">Album : <span>Klaagzang</span></div>
+            <div class="showalbums divgrab" id="allalbum" onwheel="scrollHorizontally(event, 'allalbum')">
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+                <div class="album">
+                    <img alt="img" src="../assets/img/sefa.jpg">
+                    <div class="onhoverResult2">
+                        <div class="artistealbumhoversearch">
+                            Sefa
+                        </div>
+                        <div class="albumhoversearch">
+                            Klaagzang
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="visualiser" id="visu" style="z-index: -2">
+    <canvas id="canvas" ></canvas>
+</section>
+<div class="errortosmall">Taille d'écran non prise en charge</div>
+<footer>
+    <div class="sound"  id="sound">
+        <div class="volIcon" id="iconvolume">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a4a79" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
+              <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12V4zm3.025 4a4.486 4.486 0 0 1-1.318 3.182L10 10.475A3.489 3.489 0 0 0 11.025 8 3.49 3.49 0 0 0 10 5.525l.707-.707A4.486 4.486 0 0 1 12.025 8z"/>
+            </svg>
+        </div>
+        <div class="custom-range" id="rang">
+            <input type="range" min="0" max="100" value="50" step="0.1" class="slider" id="rangvol">
+            <div class="track"></div>
+            <div class="progress t1"></div>
+            <div class="thumb p1" id="th"></div>
+        </div>
+    </div>
+    <div class="midfooter">
+        <div class="titlemusic">
+            <div id="divshowtitre"></div>
+        </div>
+        <div class="custom-range2" id="rang2">
+            <input type="range" min="0" max="100" value="50" step="1" class="slider" id="slid" onmouseup="changeprogress(this.value)">
+            <div class="track"></div>
+            <div class="progress p2" id="prog"></div>
+            <div class="thumb t2" id="th2"></div>
+        </div>
+        <div class="musictimes">
+            <div class="timeinmusic" id="currtime">-:--</div>
+            <div class="totaltime" id="tottime">-:--</div>
+        </div>
+        <audio src="" id="musicPlayer" ></audio>
+    </div>
+    <div class="endfooter">
+        <div class="endfootlikeandplus">
+            <div class="endfootlike">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                </svg>
+            </div>
+            <div class="endfootplus" id="plusalone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#f6f4e5" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="controls" id="cont">
+            <div class="before" id="before">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-start-fill" viewBox="0 0 16 16">
+                    <path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0V4z"/>
+                </svg>
+            </div>
+            <div class="rond" id="rd">
+                <div class="triangle" id="tri">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="after" id="after">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-end-fill" viewBox="0 0 16 16">
+                    <path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0V4z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="affiche" id="affiche">
+            <img alt="img imgplayersiu" id="imgplayerd" src="../assets/img/sefa.jpg">
+            <div class="svgtovisu" id="svgtovisu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(246, 244, 229, 0.67)" class="bi bi-eye-slash" viewBox="0 0 16 16">
+                    <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                    <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                    <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

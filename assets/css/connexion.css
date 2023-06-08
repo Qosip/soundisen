@@ -1,0 +1,194 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+*{
+    font-family: GothamBold;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.logo{
+    position: relative;
+    top: 5vh;
+    left: 3vw;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #2a2a2a;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #2a2a2a;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #2a2a2a;
+}
+.txt{
+    position: absolute;
+    width: 30vw;
+    height: 60vh;
+    font-size: 2.5rem;
+    font-family: GothamBold;
+    top: 22vh;
+    left: 15vw;
+}
+@font-face {
+    font-family: 'GothamBold';
+    src: url("../font/GothamBold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'GothamMedium';
+    src: url("../font/GothamMedium.ttf") format("truetype");
+}
+.soundisen{
+    background: rgb(109,68,108);
+    background: linear-gradient(148deg, rgb(189, 112, 183) 0%, rgb(75, 68, 152) 48%);
+    margin-top: -1rem;
+    font-size: 60px;
+    background-size: 200% 100%;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: interLinear 5s ease-in-out infinite;
+}
+@keyframes interLinear {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+.login{
+    background-color: rgba(155, 155, 232, 0.65);
+    position: absolute;
+    top: 35vh;
+    width: 30vw;
+    height: 12rem;
+    right: 15vw;
+    border-radius: 30px;
+    align-items: center;
+    align-content: center;
+}
+.login>div{
+    position: relative;
+    width: 90%;
+    height: 2rem;
+    border-radius: 20px;
+    background-color: #7771b4;
+    margin-top: 0.8rem;
+    margin-left: 5%;
+}
+.login>button{
+    position: relative;
+    width: 90%;
+    height: 2rem;
+    border-radius: 20px;
+    margin-top: 0.8rem;
+    margin-left: 5%;
+    border: none;
+    transition-duration: 0.3s;
+}
+.connexion{
+    background-color: #5b9f5b;
+
+}
+.connexion:hover{
+    background-color: #507e50;
+}
+.inscription:hover{
+    background-color: #605998;
+}
+.login>button:hover{
+    cursor: pointer;
+}
+.inscription{
+    background-color: #7771b4;
+}
+input{
+    width: calc(100% - 2rem);
+    height: 100%;
+    border-radius: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: none;
+    background-color: #7771b4;
+}
+.txtconnexion{
+    position: absolute;
+    font-family: GothamMedium;
+    font-size: 40px;
+    top: 26vh;
+    left: 55vw;
+}
+.bubble{
+    background-color: #7771b4;
+    filter: blur(50px);
+    border-radius: 50%;
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    z-index: -1;
+}
+.retour{
+    width: 40% !important;
+    background-color: #dadada;
+}
+.validinsc{
+    width: 40% !important;
+    margin-left: 9% !important;
+    background-color: #5b9f5b;
+}
+.retour:hover, .validinsc:hover{
+    cursor: pointer;
+    height: 2rem;
+}
+.validinsc:hover{
+    margin-left: 9%;
+    background-color: #507e50;
+}
+.retour:hover{
+    margin-left: 5%;
+    background-color: #a1a1a1;
+}
+.errorlog{
+    height: 12vh;
+    position: absolute;
+    bottom: -12vh;
+    left: 0;
+    width: 100%;
+    background-color: rgba(155, 155, 232, 0.65);
+}
+.showerror{
+    animation: showtherr 3s linear forwards;
+}
+@keyframes showtherr {
+    0%{
+        bottom: -12vh;
+    }
+    10%{
+        bottom: 0;
+    }
+    90%{
+        bottom: 0;
+    }
+    100%{
+        bottom: -12vh;
+    }
+}
+.txterror{
+    position: absolute;
+    font-size: 1.5rem;
+    top: calc(50% - 0.75rem);
+    text-align: center;
+    width: 100%;
+    height: 2rem;
+}

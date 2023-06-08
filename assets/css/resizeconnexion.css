@@ -1,0 +1,40 @@
+@media (max-width: 1050px) {
+    .txt{
+        font-size: 2rem;
+    }
+    .soundisen{
+        font-size: 2.2rem;
+    }
+    .txtconnexion{
+        font-size: 2rem;
+    }
+}
+@media (max-width: 750px) {
+    .txt{
+        width: 90%;
+        top: 1vh;
+        left: 5%;
+        text-align: center;
+    }
+    .txtconnexion{
+        width: 90%;
+        top: 30vh;
+        left: 5%;
+        text-align: center;
+    }
+    .login{
+        width: 50%;
+        top: 37vh;
+        left: 25%;
+        text-align: center;
+    }
+}
+@media (max-width: 550px) {
+    .logo>img{
+        height: 1rem;
+    }
+    .logo{
+        top: 0.1rem;
+        left: 0.1rem;
+    }
+}

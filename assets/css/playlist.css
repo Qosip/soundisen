@@ -1,0 +1,162 @@
+.infoplaylist{
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    height: 30%;
+    top: 2.5%;
+    background-color: transparent;
+    display: flex;
+}
+.listplaylist{
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    height: 63%;
+    bottom: 2.5%;
+    background-color: transparent;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.imgplaylist{
+    position: absolute;
+    aspect-ratio: 1/1;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+}
+.imgplaylist>img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.donneesplaylist{
+    position: absolute;
+    overflow: hidden;
+    top: 2.5%;
+    left: calc(0.3* 78vh + 1%); /* calcul de la taille de l'image pour pas que le texte passe au dessus au resize*/
+    height: 95%;
+    width: auto;
+    min-width: 10%;
+    max-width: calc(90% - calc(0.3* 78vh + 1%));
+    color: #6b6bab;
+    display: block;
+    font-size: 1.5rem;
+}
+.donneesplaylist>div{
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+}
+#popplaylistnom, #popplaylistduree, #popplaylistdate{
+    color: #9b9be8;
+}
+.musicinplaylist{
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    height: 2.5rem;
+    background-color: rgba(161, 161, 161, 0.28);
+    margin-bottom: 0.5rem;
+}
+.musicinplayliststart{
+    position: absolute;
+    left: 0.5rem;
+    height: 90%;
+    top: 5%;
+    aspect-ratio: 1/1;
+    background-color: #6b6bab;
+    border-radius: 5px;
+}
+.musicinplayliststart>img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.musicinplayliststart>svg{
+    position: absolute;
+    width: 60%;
+    top: 20%;
+    left: 20%;
+    height: 60%;
+}
+.musicinplayliststart:hover{
+    cursor: pointer;
+}
+.musicinplaylistmid{
+    position: absolute;
+    left: calc(0.5rem + 0.9*3rem + 0.5rem);
+    width: calc(100% - calc(0.5rem + 0.9*3rem + 0.5rem)  - 8rem - 0.5rem);
+    height: 90%;
+    top: 5%;
+    background-color: transparent;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.musicinplaylistmidartist{
+    position: absolute;
+    font-size: 1rem;
+    color: #f6f4e5;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 1rem;
+    top: 0.15rem;
+}
+.musicinplaylistmidname{
+    position: absolute;
+    font-size: 0.75rem;
+    color: rgba(246, 244, 229, 0.67);
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    bottom: 0.15rem;
+    height: 0.75rem;
+}
+.musicinplaylistlast{
+    position: absolute;
+    right: 0;
+    height: 90%;
+    top: 5%;
+    width: 8rem;
+    background-color: transparent;
+}
+.buttonplusandheart{
+    position: absolute;
+    height: 100%;
+    width: 48%;
+    left: 0;
+    background-color: transparent;
+}
+.buttontimeandmore{
+    position: absolute;
+    height: 100%;
+    width: 48%;
+    right: 0;
+    background-color: transparent;
+}
+.buttontimeandmoretime{
+    text-align: center;
+    top: 0.15rem;
+    width: 100%;
+    font-size: 1rem;
+    height: 1rem;
+    position: absolute;
+    color: #f6f4e5;
+}
+.buttontimeandmoremore{
+    text-align: center;
+    bottom: -0.25rem;
+    width: 100%;
+    height: 1.5rem;
+    font-size: 1rem;
+    position: absolute;
+}
+.buttontimeandmoremore:hover{
+    cursor: pointer;
+}
+.buttontimeandmoremore>svg{
+    height: 100%;
+    width: 100%;
+}
