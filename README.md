@@ -64,7 +64,9 @@ Année : Isen CIR2 Juin 2023
          
 #Arborescence : 
          
-```├── README.md
+```
+.
+├── README.md
 ├── assets/
 │   ├── css/
 │   │   ├── connexion.css
@@ -74,10 +76,10 @@ Année : Isen CIR2 Juin 2023
 │   │   ├── resizeconnexion.css
 │   │   ├── resultsearchcss.css
 │   │   ├── style.css
-│   │   ├── visualiser.css
+│   │   └── visualiser.css
 │   ├── font/
 │   │   ├── GothamBold.ttf
-│   │   ├── GothamMedium.ttf
+│   │   └── GothamMedium.ttf
 │   ├── img/
 │   │   ├── 1989.jpg
 │   │   ├── X.jpg
@@ -97,7 +99,7 @@ Année : Isen CIR2 Juin 2023
 │   │   ├── ram.jpeg
 │   │   ├── reputation.jpeg
 │   │   ├── sefa.jpg
-│   │   ├── splhcb.jpeg
+│   │   └── splhcb.jpeg
 │   ├── js/
 │   │   ├── ajax.js
 │   │   ├── connexion.js
@@ -105,46 +107,46 @@ Année : Isen CIR2 Juin 2023
 │   │   ├── player.js
 │   │   ├── script.js
 │   │   ├── sound.js
-│   │   ├── visualiser.js
-│   ├── music/
-│   │   ├── Daft_Punk_Get_Lucky.mp3
-│   │   ├── Daft_Punk_Harder_Better_Faster_Stronger.mp3
-│   │   ├── Daft_Punk_Instant.mp3
-│   │   ├── Daft_Punk_One_More_Time.mp3
-│   │   ├── David_Guetta_Dangerous.mp3
-│   │   ├── David_Guetta_Lovers_On_The_Sun.mp3
-│   │   ├── David_Guetta_Sexy_Bitch.mp3
-│   │   ├── David_Guetta_When_Love_Takes_Over.mp3
-│   │   ├── Ed_Sheeran_Lego_House.mp3
-│   │   ├── Ed_Sheeran_Sing.mp3
-│   │   ├── Ed_Sheeran_The_A_team.mp3
-│   │   ├── Ed_Sheeran_Thinking_Out_Loud.mp3
-│   │   ├── Leks_Tribal_Memories.mp3
-│   │   ├── Lucy_In_The_Sky_With_Diamonds.mp3
-│   │   ├── Taylor_Swift_Blank_Space.mp3
-│   │   ├── Taylor_Swift_Delicate.mp3
-│   │   ├── Taylor_Swift_Look_What_You_Made_Me_Do.mp3
-│   │   ├── Taylor_Swift_Shake_It_Off.mp3
-│   │   ├── The_A_Team_Ed_Sheeran.mp3
-│   │   ├── The_Beatles_Come_Together.mp3
-│   │   ├── The_Beatles_Here_Comes_The_Sun.mp3
-│   │   ├── With_A_Little_Help_From_My_Friends.mp3
-│   │   ├── laWanksi_DuSale.mp3
+│   │   └── visualiser.js
+│   └── music/
+│       ├── Daft_Punk_Get_Lucky.mp3
+│       ├── Daft_Punk_Harder_Better_Faster_Stronger.mp3
+│       ├── Daft_Punk_Instant.mp3
+│       ├── Daft_Punk_One_More_Time.mp3
+│       ├── David_Guetta_Dangerous.mp3
+│       ├── David_Guetta_Lovers_On_The_Sun.mp3
+│       ├── David_Guetta_Sexy_Bitch.mp3
+│       ├── David_Guetta_When_Love_Takes_Over.mp3
+│       ├── Ed_Sheeran_Lego_House.mp3
+│       ├── Ed_Sheeran_Sing.mp3
+│       ├── Ed_Sheeran_The_A_team.mp3
+│       ├── Ed_Sheeran_Thinking_Out_Loud.mp3
+│       ├── Leks_Tribal_Memories.mp3
+│       ├── Lucy_In_The_Sky_With_Diamonds.mp3
+│       ├── Taylor_Swift_Blank_Space.mp3
+│       ├── Taylor_Swift_Delicate.mp3
+│       ├── Taylor_Swift_Look_What_You_Made_Me_Do.mp3
+│       ├── Taylor_Swift_Shake_It_Off.mp3
+│       ├── The_A_Team_Ed_Sheeran.mp3
+│       ├── The_Beatles_Come_Together.mp3
+│       ├── The_Beatles_Here_Comes_The_Sun.mp3
+│       ├── With_A_Little_Help_From_My_Friends.mp3
+│       └── laWanksi_DuSale.mp3
 ├── index.html
 ├── page/
-│   ├── accueil.html
+│   └── accueil.html
 ├── php/
 │   ├── class/
 │   │   ├── Database.class.php
 │   │   ├── Morceau.class.php
 │   │   ├── Playlist.class.php
-│   │   ├── User.class.php
-│   ├── request.php
+│   │   └── User.class.php
+│   └── request.php
 ├── python/
-│   ├── remplissagebdd.py
-├── sql/
-│   ├── soundisen.sql
-│   ├── sql.sql
+│   └── remplissagebdd.py
+└── sql/
+    ├── soundisen.sql
+    └── sql.sql
 
 11 directories, 70 files
 ```
