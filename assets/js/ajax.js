@@ -16,6 +16,7 @@ function ajaxRequest(type, url, callback, data = null)
       {
           case 200:
           case 201:
+              console.log(xhr.responseText);
             callback(JSON.parse(xhr.responseText));
             break;
           default:
@@ -59,12 +60,16 @@ function ajaxRequestDQS(type, url, data = null)
 // affichage de la recherche rapide
 function afficheQS(data){
   document.getElementById('idsearchresult').innerHTML = "";
+  let i = 0;
   for (let sound of data)
   {
-    document.getElementById('idsearchresult').innerHTML += 
-        "<div class=\"resultlivesearch\"><div class=\"imagesearch\"><div class=\"playbuttononsearch\"></div><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"white\" class=\"bi bi-play-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/><path d=\"M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z\"/></svg><img alt=\"img\" class=\"searchimmgg\" src=\""+sound.emplacement+"\"><div class=\"lientitre\">"+sound.emplacement_morceau+"</div><div class=\"titremorceau\">"+sound.titre+" - "+sound.album+" - "+sound.artiste+"</div></div><div class=\"infolivesearch\"><div class=\"titleinfolivesearch\">"+sound.artiste
-        +"</div><div class=\"otherinfolivesearch\">"+sound.titre+" - "+sound.album+"</div></div><div class=\"endlivesearch\"><div class=\"dureelivesearch\">"+ sound.duree+"</div><div class=\"chevronlivesearch\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#f6f4e5\" class=\"bi bi-chevron-compact-down\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" d=\"M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z\"/></svg></div></div></div>";
-  }
+      if (i<20){
+          document.getElementById('idsearchresult').innerHTML +=
+              "<div class=\"resultlivesearch\"><div class=\"imagesearch\"><div class=\"playbuttononsearch\"></div><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"white\" class=\"bi bi-play-circle\" viewBox=\"0 0 16 16\"><path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/><path d=\"M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z\"/></svg><img alt=\"img\" class=\"searchimmgg\" src=\""+sound.emplacement+"\"><div class=\"lientitre\">"+sound.emplacement_morceau+"</div><div class=\"titremorceau\">"+sound.titre+" - "+sound.album+" - "+sound.artiste+"</div></div><div class=\"infolivesearch\"><div class=\"titleinfolivesearch\">"+sound.artiste
+              +"</div><div class=\"otherinfolivesearch\">"+sound.titre+" - "+sound.album+"</div></div><div class=\"endlivesearch\"><div class=\"dureelivesearch\">"+ sound.duree+"</div><div class=\"chevronlivesearch\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#f6f4e5\" class=\"bi bi-chevron-compact-down\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" d=\"M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z\"/></svg></div></div></div>";
+          i++;
+      }
+    }
   var showbigpop = document.querySelectorAll(".chevronlivesearch");
     showbigpop.forEach(function(chevron) {
       chevron.addEventListener("click", function (event) {

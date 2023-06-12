@@ -21,7 +21,7 @@ class Database
     private function getPDO()
     {
         if ($this->pdo === null) {
-            $pdo = new PDO('mysql:dbname=' . $this->db_name . ';host=localhost;charset=UTF8', $this->db_user, $this->db_pass);
+            $pdo = new PDO('mysql:dbname=' . $this->db_name . ';host=localhost;charset=UTF8;port=3307', $this->db_user, $this->db_pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
         }
@@ -49,7 +49,7 @@ class Database
     // renvoie les derniers morceaux sortis
     public function getLastsAdded($nb)
     {
-        $sql = 'SELECT * FROM `morceau` ORDER BY `date_parution` DESC LIMIT '.$nb.';';
+        $sql = 'SELECT * FROM `album` ORDER BY `date_parution` DESC LIMIT '.$nb.';';
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute([':nb' => $nb]);
         return $sth->fetchAll(PDO::FETCH_CLASS, 'Morceau');
