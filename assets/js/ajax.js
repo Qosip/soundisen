@@ -34,7 +34,7 @@ function ajaxRequestDQS(type, url, data = null)
     let xhr;
 
     xhr = new XMLHttpRequest();
-    if (type == 'GET' && data != null)
+    if (type === 'GET' && data != null)
     url += '?' + data;
     xhr.open(type, url);
     xhr.setRequestHeader('Content-Type', 'application/JSON');
@@ -104,7 +104,7 @@ function ajaxRequestMS(type, url, data = null)
     let xhr;
 
     xhr = new XMLHttpRequest();
-    if (type == 'GET' && data != null)
+    if (type === 'GET' && data != null)
     url += '?' + data;
     xhr.open(type, url);
     xhr.setRequestHeader('Content-Type', 'application/JSON');

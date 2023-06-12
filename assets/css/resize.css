@@ -121,10 +121,12 @@
         z-index: 100;
     }
 }
-@media screen and (min-width: 1700px) { /*1530*/
+
+/*
+@media screen and (min-width: 1700px) {
     .SoundIsen{
-        left: 15%;
         font-size: 2rem;
+        top: calc(5vh - 1rem);
     }
     .user{
         width: 10%;
@@ -170,4 +172,4 @@
         width: calc(0.6*12vh);
         left: calc(50%- 0.3*12vh);
     }
-}
+}*/
