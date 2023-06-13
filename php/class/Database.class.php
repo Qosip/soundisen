@@ -31,15 +31,16 @@ class Database
     // renvoie les derniers morceaux joues par un utilisateur
     public function getLastPlayed($email, $nb)
     {
-        $sql = 'SELECT m.*, a.cover AS cover
+        $sql = 'SELECT m.*, a.cover AS cover, ar.nom_scene AS artiste
                 FROM a_lue AS al
                 INNER JOIN morceau AS m ON al.id_morceau = m.id_morceau
                 INNER JOIN album_contient_morceaux AS acm ON m.id_morceau = acm.id_morceau
                 INNER JOIN album AS a ON acm.id_album = a.id_album
+                INNER JOIN a_publie AS ap ON a.id_album = ap.id_album
+                INNER JOIN artiste AS ar ON ap.id_artiste = ar.id_artiste
                 WHERE al.email = :email
                 ORDER BY al.date_lecture DESC
                 LIMIT :limit';
-
 
         $sth = $this->getPDO()->prepare($sql);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);
@@ -61,11 +62,12 @@ class Database
     // renvoie les morceaux de la base de donnees 
     public function getMorceaux()
     {
-        //$sql = 'SELECT * FROM `morceau`';
-        $sql = 'SELECT m.*, a.cover AS cover
-                    FROM `morceau` m
-                    JOIN `album_contient_morceaux` acm ON m.id_morceau = acm.id_morceau
-                    JOIN `album` a ON acm.id_album = a.id_album';
+        $sql = 'SELECT m.*, a.cover AS cover, s.nom_scene AS artiste
+                FROM `morceau` m
+                JOIN `album_contient_morceaux` acm ON m.id_morceau = acm.id_morceau
+                JOIN `album` a ON acm.id_album = a.id_album
+                JOIN `a_publie` ap ON a.id_album = ap.id_album
+                JOIN `artiste` s ON ap.id_artiste = s.id_artiste';
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, 'Morceau');

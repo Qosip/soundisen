@@ -8,12 +8,18 @@ class Morceau
     public $duree;
     public $emplacement_morceau;
     public $cover;
+    public $artiste;
 
 
     // methodes
     public function Getid()
     {
         return $this->id_morceau;
+    }
+
+    public function Getartiste()
+    {
+        return $this->artiste;
     }
 
     public function Gettitre()
@@ -39,6 +45,11 @@ class Morceau
     public function Setid($id_morceau)
     {
         $this->id_morceau = $id_morceau;
+    }
+
+    public function Setartiste($artiste)
+    {
+        $this->artiste = $artiste;
     }
 
     public function Settitre($titre)

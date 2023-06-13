@@ -385,7 +385,7 @@ document.getElementById('before').addEventListener("click", function (event) {
     musicPlayer.src = globalListbefore[0].emplacement_morceau;
     musicPlayer.load();
     document.getElementById('divshowtitre').innerText = globalListbefore[0].titre;
-    document.getElementById('imgplayerd').src = globalListbefore[0].emplacement;
+    document.getElementById('imgplayerd').src = globalListbefore[0].cover;
     musicPlayer.addEventListener('canplay', function () {
         musicPlayer.play();
         let data = {
@@ -407,7 +407,7 @@ document.getElementById('after').addEventListener("click", function (event) {
     musicPlayer.src = globalListnext[0].emplacement_morceau;
     musicPlayer.load();
     document.getElementById('divshowtitre').innerText = globalListnext[0].titre;
-    document.getElementById('imgplayerd').src = globalListnext[0].emplacement;
+    document.getElementById('imgplayerd').src = globalListnext[0].cover;
     musicPlayer.addEventListener('canplay', function () {
         musicPlayer.play();
         let data = {

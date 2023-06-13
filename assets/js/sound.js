@@ -188,7 +188,7 @@ function displaylistlecture(sounds)
         }
         for (let i = 0; i < Math.min(20, list.length); i++) {
             globalListnext.push(list[i])
-            document.getElementById('secondcontain').innerHTML += "<div class=\"soundprevlist\"><img alt=\"img\" class=\"Imgsec1\" src=" + list[i].cover + "><div class=\"onhoversec1\"><div class=\"artistehover\">" + list[i].titre + "</div><div class=\"titrehover\">" + list[i].date_parution + "</div></div><div class=\"lientitre\">" + list[i].emplacement_morceau + "</div><div class=\"titremorceau\">" + list[i].titre +"</div></div>";
+            document.getElementById('secondcontain').innerHTML += "<div class=\"soundprevlist\"><img alt=\"img\" class=\"Imgsec1\" src=" + list[i].cover + "><div class=\"onhoversec1\"><div class=\"artistehover\">" + list[i].titre + "</div><div class=\"titrehover\">" + list[i].artiste + "</div></div><div class=\"lientitre\">" + list[i].emplacement_morceau + "</div><div class=\"titremorceau\">" + list[i].titre +"</div></div>";
         }
         var toplaymus = document.querySelectorAll(".soundprevlist");
         toplaymus.forEach(function (play) {
@@ -225,7 +225,7 @@ function displayLastPlayed(sounds)
             //console.log(sound);
             globalListbefore.push(sound)
             // document.getElementById('thirdcontain').innerHTML += "<div class=\"soundprevlist\"><img alt=\"img\" class=\"Imgsec1\" src=\""+sound.emplacement+"\"><div class=\"onhoversec1\"><div class=\"artistehover\">"+sound.titre+"</div><div class=\"titrehover\">"+sound.date_parution+"</div></div><div class=\"lientitre\">"+sound.emplacement_morceau+"</div></div>";
-            document.getElementById('firstcontain').innerHTML += "<div class=\"soundprevlist\"><img alt=\"img\" class=\"Imgsec1\" src=" + sound.cover + "><div class=\"onhoversec1\"><div class=\"artistehover\">" + sound.titre + "</div><div class=\"titrehover\">" + sound.date_parution + "</div></div><div class=\"lientitre\">" + sound.emplacement_morceau + "</div><div class=\"titremorceau\">" + sound.titre + "</div></div>";
+            document.getElementById('firstcontain').innerHTML += "<div class=\"soundprevlist\"><img alt=\"img\" class=\"Imgsec1\" src=" + sound.cover + "><div class=\"onhoversec1\"><div class=\"artistehover\">" + sound.titre + "</div><div class=\"titrehover\">" + sound.artiste + "</div></div><div class=\"lientitre\">" + sound.emplacement_morceau + "</div><div class=\"titremorceau\">" + sound.titre + "</div></div>";
         }
         var toplaymus = document.querySelectorAll(".soundprevlist");
         toplaymus.forEach(function (play) {

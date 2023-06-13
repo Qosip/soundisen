@@ -16,8 +16,6 @@ function ajaxRequest(type, url, callback, data = null)
       {
           case 200:
           case 201:
-            if (url === '../php/request.php/lastplayed/?login='+login+'&nb='+20 )
-                console.log(xhr.responseText);
             callback(JSON.parse(xhr.responseText));
             break;
           default:
