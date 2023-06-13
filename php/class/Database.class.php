@@ -31,12 +31,15 @@ class Database
     // renvoie les derniers morceaux joues par un utilisateur
     public function getLastPlayed($email, $nb)
     {
-        $sql = 'SELECT m.*
-            FROM a_lue AS al
-            INNER JOIN morceau AS m ON al.id_morceau = m.id_morceau
-            WHERE al.email = :email
-            ORDER BY al.date_lecture DESC
-            LIMIT :limit';
+        $sql = 'SELECT m.*, a.cover AS cover
+                FROM a_lue AS al
+                INNER JOIN morceau AS m ON al.id_morceau = m.id_morceau
+                INNER JOIN album_contient_morceaux AS acm ON m.id_morceau = acm.id_morceau
+                INNER JOIN album AS a ON acm.id_album = a.id_album
+                WHERE al.email = :email
+                ORDER BY al.date_lecture DESC
+                LIMIT :limit';
+
 
         $sth = $this->getPDO()->prepare($sql);
         $sth->bindValue(':email', $email, PDO::PARAM_STR);
@@ -52,13 +55,17 @@ class Database
         $sql = 'SELECT * FROM `album` ORDER BY `date_parution` DESC LIMIT '.$nb.';';
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute([':nb' => $nb]);
-        return $sth->fetchAll(PDO::FETCH_CLASS, 'Morceau');
+        return $sth->fetchAll(PDO::FETCH_CLASS, 'Album');
     }
 
     // renvoie les morceaux de la base de donnees 
     public function getMorceaux()
     {
-        $sql = 'SELECT * FROM `morceau`';
+        //$sql = 'SELECT * FROM `morceau`';
+        $sql = 'SELECT m.*, a.cover AS cover
+                    FROM `morceau` m
+                    JOIN `album_contient_morceaux` acm ON m.id_morceau = acm.id_morceau
+                    JOIN `album` a ON acm.id_album = a.id_album';
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS, 'Morceau');

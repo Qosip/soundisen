@@ -6,12 +6,9 @@ class Morceau
     public $id_morceau;
     public $titre;
     public $duree;
-    public $date_parution;
-    public $style_musical;
-    public $emplacement;
     public $emplacement_morceau;
-    public $album;
-    public $artiste;
+    public $cover;
+
 
     // methodes
     public function Getid()
@@ -24,24 +21,14 @@ class Morceau
         return $this->titre;
     }
 
+    public function Getcover()
+    {
+        return $this->cover;
+    }
+
     public function Getduree()
     {
         return $this->duree;
-    }
-
-    public function Getdate_parution()
-    {
-        return $this->date_parution;
-    }
-
-    public function Getstyle_musical()
-    {
-        return $this->style_musical;
-    }
-
-    public function Getemplacement()
-    {
-        return $this->emplacement;
     }
 
     public function Getemplacement_morceau()
@@ -64,14 +51,9 @@ class Morceau
         $this->duree = $duree;
     }
 
-    public function Setdate_parution($date_parution)
+    public function Setcover($cover)
     {
-        $this->date_parution = $date_parution;
-    }
-
-    public function Setstyle_musical($style_musical)
-    {
-        $this->style_musical = $style_musical;
+         $this->cover = $cover;
     }
 
     public function Setemplacement_fichier($emplacement)
