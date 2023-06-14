@@ -85,14 +85,13 @@ class Database
         } else {
             $filters = 'm.titre';
         }
-
-        $sql ='SELECT m.id_morceau, m.titre, m.duree, m.emplacement, m.emplacement_morceau, a.titre AS album, art.nom_scene AS artiste
-        FROM morceau m
-        JOIN album_contient_morceaux acm ON m.id_morceau = acm.id_morceau
-        JOIN album a ON acm.id_album = a.id_album
-        JOIN a_publie ap ON acm.id_album = ap.id_album
-        JOIN artiste art ON ap.id_artiste = art.id_artiste
-        WHERE '.$filters.' LIKE \'%' .$search. '%\'';
+        $sql = 'SELECT m.id_morceau AS id_morceau, m.titre AS titre, m.duree AS duree, m.emplacement_morceau AS emplacement_morceau, a.cover AS cover, a.titre AS contenudansalbum, art.nom_scene AS artiste
+                FROM morceau m
+                JOIN album_contient_morceaux acm ON m.id_morceau = acm.id_morceau
+                JOIN album a ON acm.id_album = a.id_album
+                JOIN a_publie ap ON a.id_album = ap.id_album
+                JOIN artiste art ON ap.id_artiste = art.id_artiste
+                WHERE ' . $filters . ' LIKE \'%' . $search . '%\'';
 
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute();

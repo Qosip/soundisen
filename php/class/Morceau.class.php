@@ -9,12 +9,18 @@ class Morceau
     public $emplacement_morceau;
     public $cover;
     public $artiste;
+    public $contenudansalbum;
 
 
     // methodes
     public function Getid()
     {
         return $this->id_morceau;
+    }
+
+    public function Getcontenudansalbum()
+    {
+        return $this->contenudansalbum;
     }
 
     public function Getartiste()
@@ -45,6 +51,11 @@ class Morceau
     public function Setid($id_morceau)
     {
         $this->id_morceau = $id_morceau;
+    }
+
+    public function Setcontenudansalbum($contenudansalbum)
+    {
+        $this->contenudansalbum = $contenudansalbum;
     }
 
     public function Setartiste($artiste)
