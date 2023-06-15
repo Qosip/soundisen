@@ -17,6 +17,7 @@ function renewlistenerfromlivesearch() {
 
         chevron.addEventListener("click", function () {
             ajaxRequest('GET', '../php/request.php/infos/?track=' + track + "&artiste=" + art, displayinfos)
+            ajaxRequest('GET', '../php/request.php/infosalbums/?artiste=' + art, displayinfosalbums)
         });
     });
 }
@@ -42,6 +43,34 @@ function displayinfos(infos) {
             document.getElementById('Spopup').classList.remove("searchtransi");
             document.getElementById('backpopfilter').classList.remove("searchbacktransi");
             renewlistener()
+        });
+    });
+}
+function displayinfosalbums(infos) {
+    document.querySelector('.showalbums').innerHTML = "";
+    infos.forEach(function (element) {
+        document.querySelector('.showalbums').innerHTML += "<div class=\"album\">\n" +
+            "                    <img alt=\"img\" src=\""+element.cover+"\">\n" +
+            "                    <div class=\"onhoverResult2\">\n" +
+            "                        <div class=\"artistealbumhoversearch\">\n" +
+            "                            "+element.titre+"\n" +
+            "                        </div>\n" +
+            "                        <div class=\"albumhoversearch\">\n" +
+            "                            "+element.date_parution+"\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                </div>"
+    });
+    var showresultfromalbums = document.querySelectorAll(".album");
+    showresultfromalbums.forEach(function(showresultfromartist) {
+        var onhoverResult1 = showresultfromartist.querySelector(".onhoverResult2");
+
+        showresultfromartist.addEventListener("mouseover", function() {
+            onhoverResult1.style.height = "100%";
+        });
+
+        showresultfromartist.addEventListener("mouseout", function() {
+            onhoverResult1.style.height = "0";
         });
     });
 }

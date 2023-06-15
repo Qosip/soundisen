@@ -60,6 +60,9 @@
     else if ($request[1]=='infos' && $requestMethod=='GET'){
         $data = $db->getAllInfoMorceau($_GET['track'], $_GET['artiste']);
     }
+    else if ($request[1]=='infosalbums' && $requestMethod=='GET'){
+        $data = $db->getAlbumsByArtist($_GET['artiste']);
+    }
     
 
     //gestion des requettes de type 'POST':

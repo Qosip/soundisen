@@ -136,20 +136,14 @@ class Database
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute([':titre_morceau' => $track, ':nom_scene' => $artiste]);
 
-        // Récupérer les informations des albums
-        $albums = $this->getAlbumsByArtist($artiste);
-
-        $results = $sth->fetchAll(PDO::FETCH_CLASS, 'Infos')
-
-        // Ajouter les informations des albums aux résultats
-        $results->liste_albums = $albums;
+        $results = $sth->fetchAll(PDO::FETCH_CLASS, 'Infos');
 
         return $results;
     }
 
     //récupérer tous les albums qu'un artiste a publié
-    private function getAlbumsByArtist($artiste) {
-        $sql = 'SELECT al.titre AS titre_album
+    public function getAlbumsByArtist($artiste) {
+        $sql = 'SELECT al.id_album, al.titre, al.date_parution, al.cover
                 FROM album al
                 JOIN a_publie ap ON al.id_album = ap.id_album
                 JOIN artiste a ON ap.id_artiste = a.id_artiste
@@ -158,7 +152,7 @@ class Database
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute([':nom_scene' => $artiste]);
 
-        $albums = $sth->fetchAll(PDO::FETCH_COLUMN);
+        $albums = $sth->fetchAll(PDO::FETCH_CLASS, 'Album');
 
         return $albums;
     }

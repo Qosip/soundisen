@@ -16,7 +16,7 @@ function ajaxRequest(type, url, callback, data = null)
       {
           case 200:
           case 201:
-              if (callback === displayinfos)
+              if (callback === displayinfos || callback === displayinfosalbums)
                   console.log(xhr.responseText);
             callback(JSON.parse(xhr.responseText));
             break;
