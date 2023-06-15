@@ -5,7 +5,7 @@ class Infos
     // Attributs
     private $titre;
     private $contenudansalbum;
-    private $duree;
+    private $duree_titre;
     private $annee;
 
     private $artiste_scene;
@@ -15,6 +15,7 @@ class Infos
     private $artiste_naissance;
     private $artiste_style;
     private $artiste_type;
+    private $artiste_photo;
 
     private $liste_albums;
 
@@ -25,6 +26,11 @@ class Infos
         return $this->titre;
     }
 
+    public function Getphoto()
+    {
+        return $this->photo;
+    }
+
     public function Getcontenudansalbum()
     {
         return $this->contenudansalbum;
@@ -32,7 +38,7 @@ class Infos
 
     public function Getduree()
     {
-        return $this->duree;
+        return $this->duree_titre;
     }
 
     public function Getannee()
@@ -92,7 +98,12 @@ class Infos
 
     public function Setduree($duree)
     {
-        $this->duree = $duree;
+        $this->duree_titre = $duree;
+    }
+
+    public function Setphoto($artiste_photo)
+    {
+        $this->artiste_photo = $artiste_photo;
     }
 
     public function Setannee($annee)

@@ -123,18 +123,45 @@ class Database
         
     }
 
-    // renvoie les informations detaillees d'un morceau en fonction de son id
-    public function getAllInfoMorceau($id_morceau){
-        $sql = 'SELECT a.nom_scene, a.prenom, a.nom, a.date_mort, a.style_musical, m.titre AS titre_morceau, al.titre AS titre_album, m.duree, m.date_parution
-            FROM morceau m
-            JOIN album_contient_morceaux acm ON m.id_morceau = acm.id_morceau
-            JOIN album al ON acm.id_album = al.id_album
-            JOIN a_publie ap ON al.id_album = ap.id_album
-            JOIN artiste a ON ap.id_artiste = a.id_artiste
-            WHERE m.id_morceau = :id_morceau';
+    // renvoie les informations detaillees d'un morceau en fonction de son son titre et artiste
+    public function getAllInfoMorceau($track, $artiste){
+        $sql = 'SELECT a.nom_scene, a.prenom, a.nom, a.date_mort, a.type_artiste, a.style_musical, m.duree, m.titre AS titre_morceau, al.titre AS titre_album, al.date_parution, a.photo
+                    FROM morceau m
+                    JOIN album_contient_morceaux acm ON m.id_morceau = acm.id_morceau
+                    JOIN album al ON acm.id_album = al.id_album
+                    JOIN a_publie ap ON al.id_album = ap.id_album
+                    JOIN artiste a ON ap.id_artiste = a.id_artiste
+                    WHERE m.titre = :titre_morceau AND a.nom_scene = :nom_scene';
+
         $sth = $this->getPDO()->prepare($sql);
-        $sth->execute([':id_morceau' => $id_morceau]);
-        return $sth->fetchAll(PDO::FETCH_CLASS, 'Morceau');
+        $sth->execute([':titre_morceau' => $track, ':nom_scene' => $artiste]);
+        //print_r($sth->fetchAll());
+
+        // Récupérer les informations des albums
+        $albums = $this->getAlbumsByArtist($artiste);
+
+        $results = $sth->fetchAll(PDO::FETCH_CLASS, 'Infos')
+
+        // Ajouter les informations des albums aux résultats
+        $result->liste_albums = $albums;
+
+        return $results;
+    }
+
+    //récupérer tous les albums qu'un artiste a publié
+    private function getAlbumsByArtist($artiste) {
+        $sql = 'SELECT al.titre AS titre_album
+                FROM album al
+                JOIN a_publie ap ON al.id_album = ap.id_album
+                JOIN artiste a ON ap.id_artiste = a.id_artiste
+                WHERE a.nom_scene = :nom_scene';
+
+        $sth = $this->getPDO()->prepare($sql);
+        $sth->execute([':nom_scene' => $artiste]);
+
+        $albums = $sth->fetchAll(PDO::FETCH_COLUMN);
+
+        return $albums;
     }
 
     // ajoute un utilisateur a la base de donnees

@@ -5,9 +5,9 @@ function renewlistenerfromlivesearch() {
 
     displayresult.forEach(function (element) {
         //affichage des infos sur evenement click d'un chevron
-        var track = element.querySelector(".titleinfolivesearch");
+        var track = element.querySelector(".titleinfolivesearch").innerText;
         var chevron = element.querySelector(".chevronlivesearch");
-        var artiste = element.querySelector(".otherinfolivesearch").textContent;
+        var artiste = element.querySelector(".otherinfolivesearch").innerText;
 
         var parties = artiste.split("-");
 
@@ -22,10 +22,19 @@ function renewlistenerfromlivesearch() {
 }
 
 function displayinfos(infos) {
-    document.getElementById('grabplaylist').innerHTML =""
-    for(let info of infos) {
-        document.getElementById('grabplaylist').innerHTML += "<div class=\"itemLeftPlaylist\"><div class=\"iconLeftPlaylist\"><img alt=\"img\" src=\""+playlist.image+"\"></div><div class=\"nomLeftPlaylist\">"+playlist.nom+"</div></div>"
-    }
+
+    document.querySelector('.containimg').querySelector("img").src = infos[0].photo;
+    document.querySelector('.Dnomdescene').querySelector("span").innerText = infos[0].nom_scene;
+    document.querySelector('.Dprenom').querySelector("span").innerText = infos[0].prenom;
+    document.querySelector('.Dnom').querySelector("span").innerText = infos[0].nom;
+    document.querySelector('.Dmort').querySelector("span").innerText = infos[0].date_mort;
+    document.querySelector('.Dstyle').querySelector("span").innerText = infos[0].type_artiste;
+    document.querySelector('.Dtype').querySelector("span").innerText = infos[0].style_musical;
+    document.querySelector('.Dtrack').querySelector("span").innerText = infos[0].titre_morceau;
+    document.querySelector('.Dalbum').querySelector("span").innerText = infos[0].titre_album;
+    document.querySelector('.Dduree').querySelector("span").innerText = infos[0].duree;
+    document.querySelector('.Dannee').querySelector("span").innerText = infos[0].date_parution;
+
     var showplaylist = document.querySelectorAll(".itemLeftPlaylist");
     showplaylist.forEach(function(recall) {
         recall.addEventListener('click', () => {

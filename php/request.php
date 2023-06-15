@@ -56,10 +56,9 @@
     else if ($request[1] == 'playlistDetail' && $requestMethod == 'GET')
     {
         $data = $db->getPlaylistDetails($_GET['login'], $_GET['nom_playlist']);
-    } 
-    else if ($request[1]=='infosmorc' && $requestMethod=='GET')
-    {
-        $data = $db->getAllInfoMorceau($_GET['id_morceau']);
+    }
+    else if ($request[1]=='infos' && $requestMethod=='GET'){
+        $data = $db->getAllInfoMorceau($_GET['track'], $_GET['artiste']);
     }
     
 
