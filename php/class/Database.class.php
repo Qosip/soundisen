@@ -135,7 +135,6 @@ class Database
 
         $sth = $this->getPDO()->prepare($sql);
         $sth->execute([':titre_morceau' => $track, ':nom_scene' => $artiste]);
-        //print_r($sth->fetchAll());
 
         // Récupérer les informations des albums
         $albums = $this->getAlbumsByArtist($artiste);
@@ -143,7 +142,7 @@ class Database
         $results = $sth->fetchAll(PDO::FETCH_CLASS, 'Infos')
 
         // Ajouter les informations des albums aux résultats
-        $result->liste_albums = $albums;
+        $results->liste_albums = $albums;
 
         return $results;
     }
