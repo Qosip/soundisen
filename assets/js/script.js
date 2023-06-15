@@ -266,6 +266,7 @@ var toshowpopinfo = document.querySelectorAll(".chevronlivesearch");
 toshowpopinfo.forEach(function(chevron) {
     //affichage de la popup information sur les click sur des chevrons
     chevron.addEventListener("click", function (event) {
+
         document.getElementById('bigsectionpop').style.zIndex = "7"
         document.getElementById('toshowpopupinfo').classList.add('classaddtoshowinfo')
         document.getElementById('Spopup').classList.remove("searchtransi");
